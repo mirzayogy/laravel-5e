@@ -7,6 +7,14 @@
     <title>Document</title>
 </head>
 <body>
-
+    Matakuliah
+    <br>
+    <table>
+        <thead></thead>
+        <body></body>
+    @foreach($banyak_matakuliah as $matakuliah)
+        {{ $matakuliah['kode_mk'] }} <br>
+    @endforeach
+    </table>
 </body>
 </html>
