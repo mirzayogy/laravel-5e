@@ -26,7 +26,7 @@ class MatakuliahController extends Controller
      */
     public function create()
     {
-        //
+        return view('matakuliah.create');
     }
 
     /**
@@ -34,7 +34,7 @@ class MatakuliahController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        echo("store");
     }
 
     /**
