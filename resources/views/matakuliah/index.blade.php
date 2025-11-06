@@ -55,7 +55,7 @@
                     <td> {{ $matakuliah['jumlah_sks'] }} </td>
                     <td> {{ $matakuliah['prodi_id'] }} </td>
                     <td>
-                        <a href="#">
+                        <a href="{{ route("matakuliah.edit", $matakuliah) }}">
                             Ubah
                         </a>
                         <a href="#">

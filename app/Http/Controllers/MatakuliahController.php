@@ -14,7 +14,8 @@ class MatakuliahController extends Controller
     {
         $banyak_matakuliah = Matakuliah::all();
         // dd($banyak_matakuliah);
-        return view('matakuliah.index',
+        return view(
+            'matakuliah.index',
             [
                 'banyak_matakuliah' => $banyak_matakuliah
             ]
@@ -43,7 +44,7 @@ class MatakuliahController extends Controller
 
         Matakuliah::create($data_tervalidasi);
 
-        return redirect("/matakuliah")->with('berhasil','Berhasil Tambah data');
+        return redirect("/matakuliah")->with('berhasil', 'Berhasil Tambah data');
     }
 
     /**
@@ -57,17 +58,36 @@ class MatakuliahController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Matakuliah $matakuliah)
     {
-        //
+        return view(
+            'matakuliah.edit',
+            [
+                "matakuliah" => $matakuliah
+            ]
+        );
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Matakuliah $matakuliah)
     {
-        //
+        $request->validate([
+            'kode_mk' => 'required',
+            'nama' => 'required',
+            'jumlah_sks' => 'required',
+            'prodi_id' => 'required',
+        ]);
+
+        $matakuliah->update([
+            'kode_mk' => $request->kode_mk,
+            'nama' => $request->nama,
+            'jumlah_sks' => $request->jumlah_sks,
+            'prodi_id' => $request->prodi_id,
+        ]);
+
+        return redirect("/matakuliah")->with('berhasil', 'Berhasil Ubah data');
     }
 
     /**
