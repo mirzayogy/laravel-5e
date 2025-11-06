@@ -29,11 +29,11 @@
 <body>
     Matakuliah
     <br>
-    @if(session('berhasil'))
+    @if (session('berhasil'))
         {{ session('berhasil') }}
         <br>
     @endif
-    <a href="{{ route("matakuliah.create") }}">Tambah</a>
+    <a href="{{ route('matakuliah.create') }}">Tambah</a>
     <table>
         <thead>
             <tr>
@@ -55,10 +55,10 @@
                     <td> {{ $matakuliah['jumlah_sks'] }} </td>
                     <td> {{ $matakuliah['prodi_id'] }} </td>
                     <td>
-                        <a href="{{ route("matakuliah.edit", $matakuliah) }}">
+                        <a href="{{ route('matakuliah.edit', $matakuliah) }}">
                             Ubah
                         </a>
-                        <a href="#">
+                        <a href="#" onclick="konfirmasi('{{ route('matakuliah.destroy', $matakuliah) }}')">
                             Hapus
                         </a>
                     </td>
@@ -66,6 +66,17 @@
             @endforeach
         </body>
     </table>
+    <form action="" method="POST" id="deleteForm">
+        @csrf
+        @method('DELETE')
+    </form>
 </body>
-
+<script>
+    function konfirmasi(href) {
+        if (confirm('Hapus?')) {
+            document.getElementById('deleteForm').action = href
+            document.getElementById('deleteForm').submit()
+        }
+    }
+</script>
 </html>

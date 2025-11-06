@@ -93,8 +93,9 @@ class MatakuliahController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Matakuliah $matakuliah)
     {
-        //
+        $matakuliah->delete();
+        return redirect("/matakuliah")->with('berhasil', 'Berhasil Hapus data');
     }
 }
