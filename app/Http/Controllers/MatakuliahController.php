@@ -34,7 +34,16 @@ class MatakuliahController extends Controller
      */
     public function store(Request $request)
     {
-        echo("store");
+        $data_tervalidasi = $request->validate([
+            'kode_mk' => 'required|unique:matakuliah',
+            'nama' => 'required',
+            'jumlah_sks' => 'required',
+            'prodi_id' => 'required',
+        ]);
+
+        Matakuliah::create($data_tervalidasi);
+
+        return redirect("/matakuliah")->with('berhasil','Berhasil Tambah data');
     }
 
     /**

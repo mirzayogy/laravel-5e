@@ -29,6 +29,10 @@
 <body>
     Matakuliah
     <br>
+    @if(session('berhasil'))
+        {{ session('berhasil') }}
+        <br>
+    @endif
     <a href="{{ route("matakuliah.create") }}">Tambah</a>
     <table>
         <thead>
