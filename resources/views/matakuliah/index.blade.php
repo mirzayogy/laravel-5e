@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+@extends('template.default')
+@section('content')
     <style>
         table {
             font-family: arial, sans-serif;
@@ -24,17 +18,22 @@
             background-color: #dddddd;
         }
     </style>
-</head>
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Matakuliah</h1>
+        <a href="#" class="btn btn-success btn-icon-split">
+            <span class="icon text-white-50">
+                <i class="fas fa-plus"></i>
+            </span>
+            <span class="text">Tambah</span>
+        </a>
+    </div>
 
-<body>
-    Matakuliah
     <br>
     @if (session('berhasil'))
         {{ session('berhasil') }}
         <br>
     @endif
-    <a href="{{ route('matakuliah.create') }}">Tambah</a>
-    <table>
+    <table class="table table-bordered">
         <thead>
             <tr>
                 <th>ID</th>
@@ -70,13 +69,12 @@
         @csrf
         @method('DELETE')
     </form>
-</body>
-<script>
-    function konfirmasi(href) {
-        if (confirm('Hapus?')) {
-            document.getElementById('deleteForm').action = href
-            document.getElementById('deleteForm').submit()
+    <script>
+        function konfirmasi(href) {
+            if (confirm('Hapus?')) {
+                document.getElementById('deleteForm').action = href
+                document.getElementById('deleteForm').submit()
+            }
         }
-    }
-</script>
-</html>
+    </script>
+@endsection
