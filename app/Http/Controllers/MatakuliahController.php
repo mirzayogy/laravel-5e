@@ -98,4 +98,17 @@ class MatakuliahController extends Controller
         $matakuliah->delete();
         return redirect("/matakuliah")->with('berhasil', 'Berhasil Hapus data');
     }
+
+    public function report()
+    {
+        $banyak_matakuliah = Matakuliah::with('prodi')->get();
+
+        $content = view('matakuliah.report', [
+            "banyak_matakuliah" => $banyak_matakuliah,
+        ]);
+
+        $html2pdf = new \Spipu\Html2Pdf\Html2Pdf('P', 'A4', 'en');
+        $html2pdf->writeHTML($content);
+        $html2pdf->output();
+    }
 }

@@ -17,6 +17,9 @@ Route::get('/', function () {
 Route::resource('matakuliah', MatakuliahController::class);
 Route::resource('prodi', ProdiController::class);
 
+Route::get('report', [MatakuliahController::class, 'report'])->name('matakuliah.report');
+
+
 Route::get('/mahasiswa', function () {
     return view('mahasiswa.index');
 });

@@ -117,3 +117,10 @@ Route::resource('matakuliah', MatakuliahController::class);
 </form>
 
 == perhatikan MatakuliahController.php method store
+
+=============
+membuat report
+
+composer require spipu/html2pdf
+
+pada matakuliah controller tambahkan method report()

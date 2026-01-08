@@ -1,12 +1,18 @@
 @extends('template.default')
 @section('content')
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <div class="d-sm-flex align-items-right justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Matakuliah</h1>
         <a href="{{ route('matakuliah.create') }}" class="btn btn-success btn-icon-split">
             <span class="icon text-white-50">
                 <i class="fas fa-plus"></i>
             </span>
             <span class="text">Tambah</span>
+        </a>
+        <a href="{{ route('matakuliah.report') }}" class="btn btn-warning btn-icon-split" target="_blank">
+            <span class="icon text-white-50">
+                <i class="fas fa-print"></i>
+            </span>
+            <span class="text">Cetak</span>
         </a>
     </div>
 
@@ -49,8 +55,7 @@
                                         </span>
                                         <span class="text">Ubah</span>
                                     </a>
-                                    <a href="#"
-                                        onclick="konfirmasi('{{ route('matakuliah.destroy', $matakuliah) }}')"
+                                    <a href="#" onclick="konfirmasi('{{ route('matakuliah.destroy', $matakuliah) }}')"
                                         class="btn btn-danger btn-icon-split">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-trash"></i>
