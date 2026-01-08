@@ -28,7 +28,7 @@
                             <th>Kode MK</th>
                             <th>Nama</th>
                             <th>Jumlah SKS</th>
-                            <th>Id Prodi</th>
+                            <th>Nama Prodi</th>
                             <th>Opsi</th>
                         </tr>
                     </thead>
@@ -40,7 +40,7 @@
                                 <td> {{ $matakuliah['kode_mk'] }} </td>
                                 <td> {{ $matakuliah['nama'] }} </td>
                                 <td> {{ $matakuliah['jumlah_sks'] }} </td>
-                                <td> {{ $matakuliah['prodi_id'] }} </td>
+                                <td> {{ $matakuliah->prodi->nama_prodi }} </td>
                                 <td>
                                     <a href="{{ route('matakuliah.edit', $matakuliah) }}"
                                         class="btn btn-primary btn-icon-split">
