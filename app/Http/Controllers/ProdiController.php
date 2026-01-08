@@ -12,7 +12,14 @@ class ProdiController extends Controller
      */
     public function index()
     {
-        //
+        $banyak_prodi = Prodi::all();
+        // dd($banyak_prodi);
+        return view(
+            'prodi.index',
+            [
+                'banyak_prodi' => $banyak_prodi
+            ]
+        );
     }
 
     /**
@@ -20,7 +27,7 @@ class ProdiController extends Controller
      */
     public function create()
     {
-        //
+        return view('prodi.create');
     }
 
     /**
@@ -28,7 +35,14 @@ class ProdiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data_tervalidasi = $request->validate([
+            'kode_prodi' => 'required|unique:prodi',
+            'nama_prodi' => 'required',
+        ]);
+
+        Prodi::create($data_tervalidasi);
+
+        return redirect("/prodi")->with('berhasil', 'Berhasil Tambah data');
     }
 
     /**
